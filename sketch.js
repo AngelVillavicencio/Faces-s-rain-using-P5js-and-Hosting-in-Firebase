@@ -8,6 +8,7 @@ let david =[];
 let gfe = [];
 let valladares = [];
 let valladares2=[];
+let yeckle = [];
 
 let panImage;
 let tofiImage;
@@ -20,6 +21,7 @@ let GfeImage;
 let ValladaresImage;
 let ValladaresSleepingImage;
 let carritoImage;
+let yeckleImage;
 let keyss=[];
 let izquierda;
 let derecha;
@@ -37,7 +39,7 @@ function preload() {
   ValladaresImage = loadImage('https://raw.githubusercontent.com/AngelVillavicencio/Game-124/master/valladares.jpg');
   ValladaresSleepingImage = loadImage('https://raw.githubusercontent.com/AngelVillavicencio/Game-124/master/valladares2.jpg');
   carritoImage = loadImage('https://raw.githubusercontent.com/AngelVillavicencio/Game-124/master/carrito.png');
-
+  yeckleImage = loadImage('https://raw.githubusercontent.com/AngelVillavicencio/Game-124/master/yeckle.PNG');
 }
 function setup() {
   panImage.loadPixels();
@@ -85,6 +87,9 @@ function setup() {
   for(let i=0;i<10;i++){
     valladares2[i]= new Ball(ValladaresSleepingImage,random(100,windowWidth-50),random(-1000,0),-10,2);
   }  
+  for(let i=0;i<10;i++){
+    yeckle[i]= new Ball(yeckleImage,random(100,windowWidth-50),random(-1000,0),-10,2);
+  } 
 }
 let nivel1 = true;
 let nivel2 = false;
@@ -109,11 +114,11 @@ function draw() {
   
   textSize(32);
     text('Mi puntuacion:', 10, 30);
-    text('Nivel:', 10, 50);
+    text('Nivel:', 10, 80);
   //PRIMER NIVEL
   if(nivel1){
     
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -135,7 +140,7 @@ function draw() {
     }
   }else if(nivel2){
     
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -157,7 +162,7 @@ function draw() {
       nivel1=true;
     }
   }else if(nivel3){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -179,7 +184,7 @@ function draw() {
       nivel2=true;
     }
   }else if(nivel4){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -187,10 +192,10 @@ function draw() {
     panes[i].choque();
     }
     for(let i=0;i<10;i++){
-    chichico[i].display();
-    chichico[i].caida();
-    chichico[i].choque();
-    }
+    yeckle[i].display();
+    yeckle[i].caida();
+    yeckle[i].choque();
+    } 
     if(player.GetPuntuacion()>800){
       nivel4=false;
       level='5';
@@ -201,7 +206,7 @@ function draw() {
       nivel3=true;
     }
   }else if(nivel5){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -225,7 +230,7 @@ function draw() {
       nivel4=true;
     }
   }else if(nivel6){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -249,7 +254,7 @@ function draw() {
       nivel5=true;
     }
   }else if(nivel7){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -273,7 +278,7 @@ function draw() {
       nivel6=true;
     }
   }else if(nivel8){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -297,7 +302,7 @@ function draw() {
       nivel7=true;
     }
   }else if(nivel9){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
@@ -321,7 +326,7 @@ function draw() {
       nivel8=true;
     }
   }else if(nivel10){
-    text(level, 100, 50);
+    text(level, 100, 80);
     text(player.GetPuntuacion(),230, 30);
     for(let i=0;i<10;i++){
     panes[i].display();
