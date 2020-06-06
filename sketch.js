@@ -1,6 +1,9 @@
 let panes = [];
 let panImage;
-
+let keyss=[];
+let izquierda;
+let derecha;
+let tecla;
 function preload() {
 
 	panImage = loadImage('https://raw.githubusercontent.com/AngelVillavicencio/Game-124/master/pancito.png');
@@ -17,7 +20,7 @@ function setup() {
   
     
 }
-var punt;
+
 function draw() {
   background(0, 100, 200);
   fill(0);
@@ -25,6 +28,7 @@ function draw() {
 
   
   player.display();
+  
   textSize(32);
   text('Mi puntuacion:', 10, 30);
   text(player.GetPuntuacion(),230, 30)
@@ -33,7 +37,7 @@ function draw() {
  	  panes[i].caida();
   	panes[i].choque();
   }
-  
+  player.Move();
  
   print(player.GetPuntuacion());
   print('PLAYER X:'+player.GetXposition()+'y:'+player.GetYposition());
@@ -48,7 +52,7 @@ class Player
 	constructor( x_position, y_position){
     this.x_position = x_position;
     this.y_position = windowHeight-50;
-    this.VELOCIDAD=100;
+    this.VELOCIDAD=10;
     this.puntuacion=0;
     this.direccion=1;
     this.puntuacion=0;
@@ -75,6 +79,22 @@ class Player
     	{
     		this.x_position-=this.VELOCIDAD*this.direccion;
     	}
+    }
+    Move(){
+      if(tecla==='a'){
+        this.x_position-=this.VELOCIDAD;
+        if(this.x_position<100){
+        this.x_position+=this.VELOCIDAD*this.direccion;
+        }
+      }
+      if(tecla==='d'){
+        this.x_position+=this.VELOCIDAD;
+        if(this.x_position>=windowWidth-100)
+        {
+          this.x_position-=this.VELOCIDAD*this.direccion;
+        }
+
+      }
     }
     ChangeDireccion(){
     	this.direccion*=-1;
@@ -148,17 +168,16 @@ class Ball
 
 
 function keyPressed() {
-	
-		if (key == 'a') {
-     	player.MoveLeft();
-    	}
-    	if (key == 'd'){
-        	player.MoveRight();
-    	}
-  		if (keyCode === LEFT_ARROW) {
-    		player.MoveLeft();
-  		} else if (keyCode === RIGHT_ARROW) {
-   			player.MoveRight();
- 		}
+	tecla=key;
+  if(keyCode === LEFT_ARROW){
+  tecla='a';
+  }
+  if(keyCode ===RIGHT_ARROW){
+    tecla='d';
+  }
  	return false;
+}
+function keyReleased(){
+  tecla='f';
+  return false;
 }
